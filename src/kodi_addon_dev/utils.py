@@ -63,6 +63,14 @@ class RealPathList(argparse.Action):
         values = map(fullpath, values)
         setattr(namespace, self.dest, list(values))
 
+class UrlList(argparse.Action):
+    """
+    Custom action to convert a list of path to a full canonical list of paths.
+    Eliminating any symbolic links, expanding user path and environment variables if encountered.
+    """
+    def __call__(self, _, namespace, values, option_string=None):
+        values = map(unicode_cmdargs, values)
+        setattr(namespace, self.dest, list(values))
 
 class CommaList(argparse.Action):
     """

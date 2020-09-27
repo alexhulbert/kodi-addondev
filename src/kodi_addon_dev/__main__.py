@@ -5,7 +5,7 @@ import logging
 # Package imports
 from kodi_addon_dev import repo, utils
 from kodi_addon_dev.interactive import Interact
-from kodi_addon_dev.utils import RealPath, RealPathList, CommaList
+from kodi_addon_dev.utils import RealPath, RealPathList, UrlList, CommaList
 from kodi_addon_dev.support import base_logger, Addon, setup_paths
 
 try:
@@ -44,7 +44,7 @@ run_group.add_argument("-t", "--content-type", metavar="type",
                        help="Type of content that the addon provides. Used when there is more than one type specified"
                        "within provides section of addon.xml. If this is not set it will default to video.")
 
-run_group.add_argument("-r", "--remote-repos", metavar="url", nargs="+", action=RealPathList, default=[],
+run_group.add_argument("-r", "--remote-repos", metavar="url", nargs="+", action=UrlList, default=[],
                        help="List of custom repo urls, separated by a space.")
 
 run_group.add_argument("-o", "--local-repos", metavar="path", nargs="+", action=RealPathList, default=[],
